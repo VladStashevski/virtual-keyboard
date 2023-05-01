@@ -1,0 +1,104 @@
+.centralizer {
+	margin: 0 auto;
+	font-family: "Trebuchet MS", "Helvetica", sans-serif
+}
+
+.textarea {
+	display: block;
+	width: 700px;
+	height: 200px;
+	margin: 10px auto 10px;
+	padding: 10px;
+	font-size: 18px;
+	color: #444444
+}
+
+.caseDown,.caseUp,.shiftCaps,.caps {
+	display: block;
+	width: 100;
+	min-height: 40px
+}
+
+.hidden {
+	display: none
+}
+
+.description,.language,.title {
+	margin: 10px auto;
+	text-align: center
+}
+
+.title {
+	font-size: 30px;
+	color: rgba(101,134,177,0.8);
+	-webkit-text-stroke: 1px rgba(114,177,101,0.8);
+	-webkit-text-fill-color: rgba(101,134,177,0.8)
+}
+
+.keybr {
+	width: 704px;
+	margin: 0 auto;
+	padding: 5px;
+	padding-left: 0;
+	padding-bottom: 0;
+	background: #888888;
+	border: 3px solid #222222;
+	border-radius: 5px
+}
+
+.keybr .row {
+	clear: both;
+	width: 100%;
+	height: 40px;
+	margin-bottom: 8px
+}
+
+.keybr .key {
+	float: left;
+	width: 40px;
+	height: 40px;
+	margin-left: 6px;
+	font-weight: 500;
+	line-height: 40px;
+	text-align: center;
+	color: #ffffff;
+	background: #444444;
+	border-radius: 3px;
+	cursor: pointer;
+	user-select: none;
+	transition: border-radius 0.3s, background-color 0.3s
+}
+
+.keybr .key:hover {
+	background: #79aa89
+}
+
+.keybr .key.active {
+	background-color: #2cfd72;
+	border-radius: 50px
+}
+
+.keybr .AltLeft,.keybr .AltRight,.keybr .ArrowUp,.keybr .ArrowLeft,.keybr .ArrowDown,.keybr .ArrowRight,.keybr .Backspace,.keybr .CapsLock,.keybr .ControlLeft,.keybr .ControlRight,.keybr .Delete,.keybr .Enter,.keybr .ShiftLeft,.keybr .ShiftRight,.keybr .Tab,.keybr .MetaLeft {
+	font-weight: 600;
+	background-color: #222222
+}
+
+.keybr .Tab {
+	width: 50px
+}
+
+.keybr .Backspace,.keybr .CapsLock,.keybr .ShiftLeft {
+	width: 100px
+}
+
+.keybr .Delete {
+	width: 44px
+}
+
+.keybr .Enter,.keybr .ShiftRight {
+	width: 86px
+}
+
+.keybr .Space {
+	width: 330px
+}

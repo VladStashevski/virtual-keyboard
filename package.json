@@ -1,0 +1,24 @@
+{
+  "name": "virtual-keyboard",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VladStashevski/virtual-keyboard.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VladStashevski/virtual-keyboard/issues"
+  },
+  "homepage": "https://github.com/VladStashevski/virtual-keyboard#readme",
+  "dependencies": {
+    "eslint": "^8.39.0",
+    "normalize.css": "^8.0.1"
+  }
+}
