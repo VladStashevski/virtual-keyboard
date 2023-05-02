@@ -369,7 +369,7 @@ template {
   box-sizing: border-box;
 }
 
-input, button, textarea {
+input, button, txt-square {
   font-family: inherit;
 }
 
@@ -391,7 +391,7 @@ body {
   min-height: 100vh;
 }
 
-.title {
+.header {
   font-family: "HyliaSerif";
   font-size: 25px;
   line-height: 150%;
@@ -421,7 +421,7 @@ body {
   padding: 10px;
 }
 
-.text-field__change-lang span {
+.text-field__change-language span {
   font-weight: 600;
   align-items: center;
   color: #1e4584;
@@ -473,7 +473,7 @@ body {
   grid-template-columns: 75px 40px 75px 225px 75px 40px 40px 40px;
 }
 
-.key {
+.key-cup {
   background-color: #14cffd;
   color: #f9f9de;
   display: flex;
@@ -491,47 +491,47 @@ body {
   cursor: pointer;
 }
 
-.key:active {
+.key-cup:active {
   background-color: #b8a064;
 }
 
-.key.pressed {
+.key-cup.pressed {
   background-color: #b8a064;
   color: #fff;
   transform: scale(0.95);
 }
 
-.key.arrow-key {
+.key-cup.arrow-key-cup {
   background-color: #4cd39d;
 }
 
-.key.arrow-key:active {
+.key-cup.arrow-key-cup:active {
   color: #f9f9de;
   background-color: #b8a064;
 }
 
-.key.arrow-key.pressed {
+.key-cup.arrow-key-cup.pressed {
   color: #f9f9de;
   background-color: #b8a064;
 }
 
-.key.func-key {
+.key-cup.func-key-cup {
   font-weight: 500;
   color: #f9f9de;
   background-color: #4cd39d;
 }
 
-.key.func-key:active {
+.key-cup.func-key-cup:active {
   background-color: #b8a064;
   color: #f9f9de;
 }
 
-.key.func-key.pressed {
+.key-cup.func-key-cup.pressed {
   background-color: #b8a064;
   color: #f9f9de;
 }
 
-.key.doubled-key {
+.key-cup.doubled-key-cup {
   display: flex;
   flex-direction: column;
   padding: 0 13px;
@@ -539,14 +539,14 @@ body {
   justify-content: center;
 }
 
-.key .shifted-key {
+.key-cup .shifted-key-cup {
   font-size: 18px;
   color: #96b1db;
   line-height: 100%;
   align-self: flex-start;
 }
 
-.key .unshifted-key {
+.key-cup .unshifted-key-cup {
   align-self: flex-end;
   line-height: 100%;
 }
