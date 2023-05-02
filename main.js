@@ -1,6 +1,7 @@
-import {enKey, ruKey, fnKey, arrKey} from './module/const.js';
-import {createRowsKey} from './module/keyboard.js';
-import {inputKeyValueOnClick} from './module/text-area.js';
+/* eslint-disable import/extensions */
+/* eslint-disable object-curly-newline */
+import { enKey, ruKey, fnKey, arrKey } from './module/const.js';
+import { createRowsKey } from './module/keyboard.js';
 
 // ---------------------------------
 const body = document.querySelector('body');
@@ -17,9 +18,9 @@ const createTextArea = () => {
   const changeLanguage = document.createElement('p');
   changeLanguage.classList.add('text-field__change-language');
   if (language === 'en') {
-    changeLanguage.innerHTML = 'Press <span>shift+option(alt)</span> to change languageuage. \nTask created in Windows OS';
+    changeLanguage.innerHTML = 'Press <span>shift+option(alt)</span> to change languageuage. \nTask created in macOS';
   } else {
-    changeLanguage.innerHTML = 'Нажмите <span>shift+option(alt)</span> для смены языка. \nТаск выполнен в ОС Windows';
+    changeLanguage.innerHTML = 'Нажмите <span>shift+option(alt)</span> для смены языка. \nТаск выполнен в ОС macOS';
   }
   const txtSquare = document.createElement('textarea');
   txtSquare.classList.add('text-field__textarea');
@@ -52,7 +53,7 @@ class KeyCup {
   }
 
   create() {
-    let keyCup = document.createElement('div');
+    const keyCup = document.createElement('div');
     keyCup.classList.add('key-cup');
     keyCup.dataset.code = `${this.code}`;
     keyCup.dataset.shifted = `${this.shifted}`;
@@ -71,7 +72,7 @@ class KeyCup {
 const createKeysCup = (keysData, rows) => {
   for (let i = 0; i < keysData.length; i += 1) {
     for (let j = 0; j < keysData[i].length; j += 1) {
-      let keyCup = new KeyCup(keysData[i][j]).create();
+      const keyCup = new KeyCup(keysData[i][j]).create();
       rows[i].appendChild(keyCup);
     }
   }
@@ -93,7 +94,7 @@ const txtSquare = document.querySelector('textarea');
 const switchUpperCase = () => {
   document.querySelectorAll('.key-cup').forEach((item) => {
     if (!item.classList.contains('arrow-key-cup') && !item.classList.contains('func-key-cup') && item.dataset.shifted !== 'null') {
-      let keyCup = item;
+      const keyCup = item;
       keyCup.innerHTML = keyCup.dataset.shifted;
     }
   });
@@ -103,7 +104,7 @@ const switchUpperCase = () => {
 const switchLowerCase = () => {
   document.querySelectorAll('.key-cup').forEach((item) => {
     if (!item.classList.contains('arrow-key-cup') && !item.classList.contains('func-key-cup') && item.dataset.shifted !== 'null') {
-      let keyCup = item;
+      const keyCup = item;
       keyCup.innerHTML = keyCup.dataset.value;
     }
   });
@@ -112,9 +113,9 @@ const switchLowerCase = () => {
 // меняет на большие буквы
 const switchUpperCaseСaps = () => {
   document.querySelectorAll('.key-cup').forEach((item) => {
-    let code = item.dataset.code;
+    const { code } = item.dataset;
     if (code.indexOf('key-cup') !== -1) {
-      let keyCup = item;
+      const keyCup = item;
       keyCup.innerHTML = keyCup.innerHTML.toLocaleUpperCase();
     }
   });
@@ -122,9 +123,9 @@ const switchUpperCaseСaps = () => {
 
 const inputKeyboardValue = (insertValue) => {
   let text = txtSquare.value;
-  let cursor = txtSquare.selectionStart;
+  const cursor = txtSquare.selectionStart;
   let piece1 = text.slice(0, cursor);
-  let piece2 = text.slice(cursor);
+  const piece2 = text.slice(cursor);
   piece1 += insertValue;
   text = piece1 + piece2;
   txtSquare.value = text;
@@ -134,9 +135,9 @@ const inputKeyboardValue = (insertValue) => {
 
 const inputDeltValue = () => {
   let text = txtSquare.value;
-  let cursor = txtSquare.selectionStart;
-  let piece1 = text.slice(0, cursor);
-  let piece2 = text.slice(cursor + 1);
+  const cursor = txtSquare.selectionStart;
+  const piece1 = text.slice(0, cursor);
+  const piece2 = text.slice(cursor + 1);
   text = piece1 + piece2;
   txtSquare.value = text;
   txtSquare.selectionStart = cursor;
@@ -145,11 +146,11 @@ const inputDeltValue = () => {
 
 const inputBackspcValue = () => {
   let text = txtSquare.value;
-  let cursor = txtSquare.selectionStart;
-  let endCursor = txtSquare.selectionEnd;
+  const cursor = txtSquare.selectionStart;
+  const endCursor = txtSquare.selectionEnd;
   if (cursor === endCursor) {
-    let piece1 = text.slice(0, cursor - 1);
-    let piece2 = text.slice(cursor);
+    const piece1 = text.slice(0, cursor - 1);
+    const piece2 = text.slice(cursor);
     text = piece1 + piece2;
     txtSquare.value = text;
     txtSquare.selectionStart = cursor - 1;
@@ -157,17 +158,84 @@ const inputBackspcValue = () => {
   }
 };
 
-
+const inputKeyValueOnClick = (e) => {
+  const keyCup = e.target;
+  if (keyCup.classList.contains('key-cup')) {
+    txtSquare.focus();
+    if (keyCup.dataset.code.indexOf('key-cup') !== -1) {
+      if (сaps && !shift) {
+        inputKeyboardValue(`${keyCup.dataset.shifted}`);
+      } else if (сaps && shift) {
+        inputKeyboardValue(`${keyCup.dataset.value}`);
+      } else if (!сaps && shift) {
+        inputKeyboardValue(`${keyCup.dataset.shifted}`);
+      } else if (!сaps && !shift) {
+        inputKeyboardValue(`${keyCup.dataset.value}`);
+      }
+    }
+    if (!fnKey.includes(keyCup.dataset.code) && !arrKey.includes(keyCup.dataset.code) && keyCup.dataset.code.indexOf('key-cup') === -1) {
+      if (сaps && !shift) {
+        inputKeyboardValue(`${keyCup.dataset.value}`);
+      } else if (сaps && shift) {
+        inputKeyboardValue(`${keyCup.dataset.shifted}`);
+      } else if (!сaps && shift) {
+        inputKeyboardValue(`${keyCup.dataset.shifted}`);
+      } else if (!сaps && !shift) {
+        inputKeyboardValue(`${keyCup.dataset.value}`);
+      }
+    }
+    if (arrKey.includes(keyCup.dataset.code)) {
+      const cursor = txtSquare.selectionStart;
+      if (keyCup.dataset.code === 'ArrowLeft') {
+        txtSquare.selectionStart = cursor - 1;
+        txtSquare.selectionEnd = cursor - 1;
+      } else if (keyCup.dataset.code === 'ArrowRight') {
+        txtSquare.selectionStart = cursor + 1;
+        txtSquare.selectionEnd = cursor + 1;
+      } else if (keyCup.dataset.code === 'ArrowUp') {
+        inputKeyboardValue('↑');
+      } else if (keyCup.dataset.code === 'ArrowDown') {
+        inputKeyboardValue('↓');
+      }
+    }
+    if (keyCup.dataset.code === 'Tab') {
+      inputKeyboardValue('    ');
+    }
+    if (keyCup.dataset.code === 'Delete') {
+      inputDeltValue(txtSquare);
+    }
+    if (keyCup.dataset.code === 'Backspace') {
+      inputBackspcValue(txtSquare);
+    }
+    if (keyCup.dataset.code === 'Space') {
+      inputKeyboardValue(' ');
+    }
+    if (keyCup.dataset.code === 'Enter') {
+      inputKeyboardValue('\n');
+    }
+    if (keyCup.dataset.code === 'Сaps') {
+      if (сaps) {
+        сaps = false;
+        keyCup.classList.remove('pressed');
+        switchLowerCase();
+      } else {
+        сaps = true;
+        keyCup.classList.add('pressed');
+        switchUpperCaseСaps();
+      }
+    }
+  }
+};
 
 const addPresOnClick = (e) => {
-  let keyCup = e.target;
+  const keyCup = e.target;
   if (keyCup.classList.contains('key-cup')) {
     keyCup.classList.add('pressed');
   }
 };
 
 const removePresOnClick = (e) => {
-  let keyCup = e.target;
+  const keyCup = e.target;
   if (keyCup.classList.contains('key-cup')) {
     keyCup.classList.remove('pressed');
   }
@@ -203,7 +271,7 @@ window.addEventListener('keyup', (e) => {
   }
 
   if (e.code.indexOf('key-cup') !== -1) {
-    let keyCup = document.querySelector(`.key-cup[data-code="${e.code}"]`);
+    const keyCup = document.querySelector(`.key-cup[data-code="${e.code}"]`);
     if (сaps && !shift) {
       inputKeyboardValue(`${keyCup.dataset.shifted}`);
     } else if (сaps && shift) {
@@ -216,7 +284,7 @@ window.addEventListener('keyup', (e) => {
   }
 
   if (!fnKey.includes(e.code) && !arrKey.includes(e.code) && e.code.indexOf('key-cup') === -1) {
-    let keyCup = document.querySelector(`.key-cup[data-code="${e.code}"]`);
+    const keyCup = document.querySelector(`.key-cup[data-code="${e.code}"]`);
     if (сaps && !shift) {
       inputKeyboardValue(`${keyCup.dataset.value}`);
     } else if (сaps && shift) {
@@ -244,7 +312,7 @@ window.addEventListener('keyup', (e) => {
     inputKeyboardValue(' ');
   }
   if (e.code.indexOf('Arrow') !== -1) {
-    let cursor = txtSquare.selectionStart;
+    const cursor = txtSquare.selectionStart;
     if (e.code === 'ArrowLeft') {
       txtSquare.selectionStart = cursor - 1;
       txtSquare.selectionEnd = cursor - 1;
@@ -263,7 +331,7 @@ window.addEventListener('click', inputKeyValueOnClick);
 window.addEventListener('mousedown', addPresOnClick);
 window.addEventListener('mouseup', removePresOnClick);
 
-// меняет язык при комбинации 
+// меняет язык при комбинации
 const swithcLanguage = (event) => {
   if (event.shiftKey && event.altKey) {
     if (language === 'en') {
@@ -287,7 +355,7 @@ const swithcLanguage = (event) => {
 // меняет язык
 document.addEventListener('keydown', swithcLanguage);
 
-// сохраняет выбор языка 
+// сохраняет выбор языка
 const setLocalStorage = () => {
   localStorage.setItem('language', language);
 };
