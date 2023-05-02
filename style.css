@@ -352,7 +352,7 @@ template {
   font-family: "HyliaSerif";
   font-style: normal;
   font-weight: 400;
-  src: url("../fonts/hyliaserifcyr.ttf");
+  src: url("../fonts/HyliaSerifBeta-Regular.otf") format("woff2");
   font-display: swap;
 }
 
